@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ToRefactorForOctave
@@ -30,7 +31,7 @@ namespace ToRefactorForOctave
         {
             Console.WriteLine("Insert x0 in following line");
             Double.TryParse(Console.ReadLine().Replace('.', ','), out x0);
-            
+            Thread.Sleep(1);
             velocprev = vel0;
             deltat = 0.0001;
             xprev = x0;
