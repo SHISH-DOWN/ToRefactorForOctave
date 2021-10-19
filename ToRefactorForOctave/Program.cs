@@ -33,7 +33,7 @@ namespace ToRefactorForOctave
             Double.TryParse(Console.ReadLine().Replace('.', ','), out x0);
             Thread.Sleep(1);
             velocprev = vel0;
-            deltat = 0.0001;
+            deltat = 1e-16;
             xprev = x0;
             Console.WriteLine($"Here will be output of experimental data");
             while (x>=0)
