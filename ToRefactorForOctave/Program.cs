@@ -49,10 +49,10 @@ namespace ToRefactorForOctave
                 alpha =  2 * deltat * density * veloc * Surface  * Multiplier / mass;
                 g = (1 - alpha)*(1 + alpha);
                 veloc = (-1 + Pow((1 + 4 * B * deltat * (velocprev + G * deltat)),0.5))/(B*deltat) ;
-                accel = (veloc - velocprev) / deltat;
-                x = xprev - velocprev * deltat - accel * Math.Pow(deltat, 2) / 2;
+                accel = g - B * Pow(veloc,2) ;
+                x = xprev + velocprev * deltat + accel * Math.Pow(deltat, 2) / 2;
                 t = t + deltat;
-                deltat = 0.1;
+                deltat = 1;
                 xprev = x;
                 velocprev = veloc;
                 
