@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ToRefactorForOctave
 {
@@ -35,10 +36,12 @@ namespace ToRefactorForOctave
             velocprev = 0;
             deltat = 0.1;
             xprev = x0;
+            StreamWriter wrtofile = new StreamWriter($"D:\\experimental {x0}.txt");
             Console.WriteLine($"Here will be output of experimental data");
             while (xprev>=0)
             {
                 Console.WriteLine($"{t} , {deltat} , {x} , {veloc} , {accel} , {g} ");
+                wrtofile.WriteLine($"{t} , {deltat} , {x} , {veloc} , {accel} , {g} ");
                 accel = G - 0.5 * density * Math.Pow(velocprev, 2) * Surface * Multiplier / mass;
                 alpha = density * veloc * Surface * Multiplier * deltat;
                 g = 1 - alpha;
@@ -51,6 +54,7 @@ namespace ToRefactorForOctave
                 
 
             }
+            wrtofile.Close();
             Console.ReadKey();
 
         }
