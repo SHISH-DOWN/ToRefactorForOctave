@@ -48,9 +48,9 @@ namespace ToRefactorForOctave
                 wrtofile.WriteLine($"{t} , {deltat} , {x} , {veloc} , {accel} , {g} ");
                 alpha =  2 * deltat * density * veloc * Surface  * Multiplier / mass;
                 g = (1 - alpha)*(1 + alpha);
-                veloc = (-1 + Pow((1 + Pow(B * deltat, 2) * (Pow(velocprev,2) + 2 * velocprev - G*deltat)), 0.5)) / (B * deltat);
+                veloc = (-1 + Pow((1 + 4 * B * deltat * (velocprev + G * deltat)),0.5))/(B*deltat) ;
                 accel = (veloc - velocprev) / deltat;
-                x = xprev + velocprev * deltat + accel * Math.Pow(deltat, 2) / 2;
+                x = xprev - velocprev * deltat - accel * Math.Pow(deltat, 2) / 2;
                 t = t + deltat;
                 deltat = 0.1;
                 xprev = x;
